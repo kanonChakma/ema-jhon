@@ -3,22 +3,26 @@ import "./Shop.css";
 import fakeData from "../../fakeData";
 import Product from "../Product/Product";
 import Cart from "../Cart/Cart";
-import { addToDatabaseCart, getDatabaseCart } from "../../utilities/databaseManager";
+import { Link } from "react-router-dom";
+import {
+  addToDatabaseCart,
+  getDatabaseCart
+} from "../../utilities/databaseManager";
 const Shop = () => {
   //    const data=fakeData.slice(0,10);
   const [product, setProduct] = useState(fakeData);
   const [cart, setCart] = useState([]);
 
-   useEffect(()=>{
-    const saveData=getDatabaseCart();
-    const getKey=Object.keys(saveData);
-    const count=getKey.map(key=>{
-          const product=fakeData.find(pd=>pd.key===key); 
-          product.quantity=saveData[key];
-          return product;
-    })
-   setCart(count);
-   },[])
+  useEffect(() => {
+    const saveData = getDatabaseCart();
+    const getKey = Object.keys(saveData);
+    const count = getKey.map((key) => {
+      const product = fakeData.find((pd) => pd.key === key);
+      product.quantity = saveData[key];
+      return product;
+    });
+    setCart(count);
+  }, []);
   const handleEvent = (product) => {
     const tobeAdded = product.key;
     const sameproduct = cart.find((pd) => pd.key === tobeAdded);
@@ -47,7 +51,15 @@ const Shop = () => {
           ></Product>
         ))}
       </div>
-      <div className="cart-container">{<Cart cart={cart}></Cart>}</div>
+      <div className="cart-container">
+        {
+          <Cart cart={cart}>
+            <Link to="/review">
+              <button className="cart-btn">Review your order</button>
+            </Link>
+          </Cart>
+        }
+      </div>
     </div>
   );
 };
