@@ -2,7 +2,6 @@ import React from "react";
 import "./Product.css";
 import { Link } from "react-router-dom";
 const Product = (props) => {
-    console.log(props);
   const { img, name, price, stock, key } = props.product;
   return (
     <div className="product">
@@ -15,12 +14,14 @@ const Product = (props) => {
         </h4>
         <h4>${price}</h4>
         <p>only {stock} are available</p>
-        {  props.addtoCart && <button
+        {props.addtoCart && (
+          <button
             onClick={() => props.handleEvent(props.product)}
-            className="product-btn">
+            className="product-btn"
+          >
             add to cart
           </button>
-        }
+        )}
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Header></Header>
       <Router>
         <Switch>
