@@ -2,8 +2,12 @@ import React from "react";
 import "./Cart.css";
 import { Link } from "react-router-dom";
 const Cart = (props) => {
+  console.log(props.cart);
   const cart = props.cart;
-  const price = cart.reduce((total, item) => total + item.price, 0);
+  const price = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
   let ship = 0;
   if (price > 40) {
     ship = 0;
@@ -41,11 +45,9 @@ const Cart = (props) => {
           </tr>
         </tbody>
       </table>
-      <a href="/review">
-        <Link to="/review">
-          <button className="cart-btn">Review your order</button>
-        </Link>
-      </a>
+      <Link to="/review">
+        <button className="cart-btn">Review your order</button>
+      </Link>
     </div>
   );
 };

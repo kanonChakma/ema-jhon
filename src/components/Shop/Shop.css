@@ -1,11 +1,14 @@
-.shop-container{
-    display: flex;
+.main-container {
+  display: flex;
 }
-.product-container{
-    margin-left:10%;
-    width: 70%;
-    border-right: 1px solid gray;
+.product-container {
+  margin-left: 10%;
+  width: 70%;
+  border-right: 1px solid gray;
 }
-.cart-container{
-    width: 30%;
+.cart-container {
+  width: 30%;
+}
+.review-h1 {
+  text-align: center;
 }
